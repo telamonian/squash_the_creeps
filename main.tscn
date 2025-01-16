@@ -34,7 +34,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("BoxShape3D_fdw0n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("BoxMesh_n2dqq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -42,7 +41,6 @@ transform = Transform3D(1, 0, 0, 0, 0.905235, 0.424911, 0, -0.424911, 0.905235, 
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_kjklh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="CameraPivot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
