@@ -20,5 +20,8 @@ func init(pos_start, pos_player):
 	# update the Mob's actual velocity
 	velocity = vel_target
 
+func _on_visible_on_screen_notifier_3d_screen_exited():
+	queue_free()
+
 func _physics_process(delta):
 	move_and_slide()
