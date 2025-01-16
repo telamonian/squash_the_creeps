@@ -1,8 +1,11 @@
 extends CharacterBody3D
 
+# emitted when player jumps on this mob
+signal squashed
+
 @export var speed_min = 10 # m/s
 @export var speed_max = 18 # m/s
-@export var little_g = 75
+@export var little_g = 75 # m/s/s
 
 # this will be called from the Main scene
 func init(pos_start, pos_player):
@@ -20,6 +23,10 @@ func init(pos_start, pos_player):
 
 	# update the Mob's actual velocity
 	velocity = vel_target
+
+func squash():
+	squashed.emit()
+	queue_free()
 
 func _on_visible_on_screen_notifier_3d_screen_exited():
 	queue_free()

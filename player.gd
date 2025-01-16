@@ -6,6 +6,8 @@ extends CharacterBody3D
 @export var little_g = 75
 # the velocity applied to the character upon jumping in the +y direction, m/s
 @export var vel_jump = 20
+# the velocity applied to the character upon bouncing on a mob, m/s
+@export var vel_bounce = 16
 
 var vel_target = Vector3.ZERO
 
@@ -41,6 +43,26 @@ func _physics_process(delta):
 	else:
 		# if in the air, increase downward velocity according to gravity. Also allow for perfect XZ air control
 		vel_target.y = vel_target.y - (little_g * delta)
+
+	# iterate through all collisions that occurred this frame
+	for i in range(get_slide_collision_count()):
+		# get the ith player collision
+		var collision = get_slide_collision(i)
+
+		# if the collision is with ground
+		if collision.get_collider() == null:
+			continue
+
+		# if the collision is with a mob
+		if collision.get_collider().is_in_group("mob"):
+			var mob = collision.get_collider()
+			# check that collision is from above
+			if Vector3.UP.dot(collision.get_normal()) > .1:
+				# if so, squash the mob and bounce
+				mob.squash()
+				vel_target.y = vel_bounce
+				# prevent further duplicate calls
+				break
 
 	# update the velocity of the Player:CharacterBody3D object
 	velocity = vel_target
