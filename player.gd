@@ -4,6 +4,8 @@ extends CharacterBody3D
 @export var speed = 14
 # the downward acceleration when in the air, meters/second^2
 @export var little_g = 75
+# the velocity applied to the character upon jumping in the +y direction, m/s
+@export var vel_jump = 20
 
 var vel_target = Vector3.ZERO
 
@@ -33,7 +35,10 @@ func _physics_process(delta):
 	vel_target.z = dir.z * speed
 
 	# vertical velocity
-	if not is_on_floor():
+	if is_on_floor():
+		if Input.is_action_just_pressed("jump"):
+			vel_target.y = vel_jump
+	else:
 		# if in the air, increase downward velocity according to gravity. Also allow for perfect XZ air control
 		vel_target.y = vel_target.y - (little_g * delta)
 

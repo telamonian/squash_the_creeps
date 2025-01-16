@@ -25,9 +25,9 @@ func _on_visible_on_screen_notifier_3d_screen_exited():
 	queue_free()
 
 func _physics_process(delta):
-	# vertical velocity
-	if not is_on_floor():
-		# if in the air, increase downward velocity according to gravity. Also allow for perfect XZ air control
-		velocity.y = velocity.y - (little_g * delta)
+	## vertical velocity
+	#if not is_on_floor():
+		## if in the air, increase downward velocity according to gravity. Also allow for perfect XZ air control
+		#velocity.y = velocity.y - (little_g * delta)
 
 	move_and_slide()
