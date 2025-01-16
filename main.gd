@@ -18,10 +18,11 @@ func _on_mob_timer_timeout():
 
 	# choose a random location on the SpawnPath
 	# get a ref to the SpawnLocation node
-	var loc_mob_spawn = $SpawnPath/SpawnLocation #get_node("SpawnPath/SpawnLocation")
+	var loc_mob_spawn = get_node("SpawnPath/SpawnLocation")
 	# give it a random offset
 	loc_mob_spawn.progress_ratio = randf()
 
+	#loc_mob_spawn.position.y -= 1
 	var pos_player = $Player.position
 	mob.init(loc_mob_spawn.position, pos_player)
 
