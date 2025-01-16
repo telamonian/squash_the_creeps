@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 # how fast the players moves in meters/second
-@export var speed_player = 14
+@export var speed = 14
 # the downward acceleration when in the air, meters/second^2
 @export var little_g = 75
 
@@ -29,8 +29,8 @@ func _physics_process(delta):
 		$Pivot.basis = Basis.looking_at(dir)
 
 	# ground velocity
-	vel_target.x = dir.x * speed_player
-	vel_target.z = dir.z * speed_player
+	vel_target.x = dir.x * speed
+	vel_target.z = dir.z * speed
 
 	# vertical velocity
 	if not is_on_floor():
