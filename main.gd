@@ -2,16 +2,6 @@ extends Node
 
 @export var mob_scene: PackedScene
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_mob_timer_timeout():
 	# create a new instance of the Mob scene
 	var mob = mob_scene.instantiate()
@@ -28,3 +18,6 @@ func _on_mob_timer_timeout():
 
 	# spawn the mob by adding it to the main scene
 	add_child(mob)
+
+func _on_player_hit():
+	$MobTimer.stop()
